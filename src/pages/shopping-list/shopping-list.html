@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{ index }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onAddItem(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>名字</ion-label>
+        <ion-input
+          type="text"
+          name="ingredientName"
+          placeholder="陳大文"
+          ngModel
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>參數1</ion-label>
+        <ion-input
+          type="number"
+          name="param1"
+          placeholder="123456"
+          ngModel
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>參數2</ion-label>
+        <ion-input
+          type="text"
+          name="param2"
+          placeholder="ASDF"
+          ngModel></ion-input>
+      </ion-item>
+    </ion-list>
+    <button
+      ion-button
+      type="submit"
+      block [disabled]="!f.valid">提交</button>
+  </form>
+  <ion-list>
+    <ion-item *ngFor="let item of listItems; let i = index " (click)="onCheckItem(i)">
+      <h3 padding>{{ item.name }}</h3>
+      <hr>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
